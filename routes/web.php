@@ -45,7 +45,9 @@ Route::match(['get','post'], '/comments', function () {
 });
 */
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth']], function () {
+
+	Route::get('/', 'DashboardController@dashboard')->name('admin.index');
 
 	Route::get('/create/{var?}/{id?}', function ($id = 5, $var = null) {
 		//return redirect()->route('article', array('id'=>25));

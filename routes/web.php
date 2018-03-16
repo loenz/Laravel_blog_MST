@@ -49,6 +49,9 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth']],
 
 	Route::get('/', 'DashboardController@dashboard')->name('admin.index');
 
+	// List pages. RESTful !
+	Route::resource('/category', 'CategoryController', ['as'=>'admin']);
+
 	Route::get('/create/{var?}/{id?}', function ($id = 5, $var = null) {
 		//return redirect()->route('article', array('id'=>25));
 
@@ -75,10 +78,6 @@ Route::get('/about/{id?}', 'firstController@show');
 Route::get('/articles', ['uses'=>'Admin\CoreResource@getArticles', 'as'=>'articles']);
 Route::get('/article/{page}', ['uses'=>'Admin\CoreResource@getArticle', 'middleware' => 'mymiddle', 'as'=>'article']);
 
-
-// List pages. RESTful !
-
-Route::resource('/pages', 'Admin\CoreResource');
 
 // Админка. Маршруты закрытой части.
 // Посредник проверок пользователя.

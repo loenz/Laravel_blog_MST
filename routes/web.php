@@ -40,18 +40,11 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth']],
 
 	Route::resource('/category', 'CategoryController', ['as'=>'admin']);
 
-	
-
+	Route::resource('/article', 'ArticleController', ['as'=>'admin']);
 
 });
 
 // Работа с контроллерами
-
-//Route::get('/about', 'firstController@show');
-//Route::get('/about/{id?}', 'firstController@show');
-
-Route::get('/articles', ['uses'=>'Admin\CoreResource@getArticles', 'as'=>'articles']);
-Route::get('/article/{page}', ['uses'=>'Admin\CoreResource@getArticle', 'middleware' => 'mymiddle', 'as'=>'article']);
 
 
 // Админка. Маршруты закрытой части.

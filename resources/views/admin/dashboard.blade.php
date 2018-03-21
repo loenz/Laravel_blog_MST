@@ -37,7 +37,7 @@
 					Создать категорию
 				</a>
 
-				<a class="list-group-item" href="#">
+				<a class="list-group-item" href="{{route('admin.category.index')}}">
 					<h4 class="list-group-item-heading">Категория первая</h4>
 					<p class="list-group-item-text">
 						Кол-во материалов
@@ -47,11 +47,11 @@
 
 			<div class="col-sm-6">
 
-				<a class="btn btn-block btn-default" href="#">
+				<a class="btn btn-block btn-default" href="{{route('admin.article.create')}}">
 					Создать материал
 				</a>
 
-				<a class="list-group-item" href="#">
+				<a class="list-group-item" href="{{route('admin.article.index')}}">
 					<h4 class="list-group-item-heading">Материал первый</h4>
 					<p class="list-group-item-text">
 						Категория

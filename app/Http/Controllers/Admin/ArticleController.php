@@ -20,7 +20,7 @@ class ArticleController extends Controller
         //
         return view('admin.articles.index', [
 
-            'articles' => Article::orderBy('created_at', 'desc')->paginate(10)
+            'articles' => Article::orderBy('created_at', 'desc')->paginate(5)
 
         ]);
     }

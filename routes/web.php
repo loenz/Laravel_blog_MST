@@ -11,28 +11,12 @@
 |
 */
 
-Route::get('/', 'Admin\IndexController@show')->name('welcome');
+// Вывод новостей на сайте
 
-//Route::get('/form', function () {
-//	//echo Route::current()->getName();
-//	return view('form');
-//
-//});
-/*
-//Route::post('/comments', function () {
-	echo "<pre>123";
-	print_r($_POST);
-	echo "</pre>";
+Route::get('/blog/category/{slug?}', 'BlogController@category')->name('category');
+Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
 
-});
-*/
-/*
-Route::match(['get','post'], '/comments', function () {
-	echo "<pre>";
-	print_r($_POST);
-	echo "</pre>";
-});
-*/
+// Админка
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth']], function () {
 
@@ -44,17 +28,9 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth']],
 
 });
 
-// Работа с контроллерами
-
-
-// Админка. Маршруты закрытой части.
-// Посредник проверок пользователя.
-
-Route::group(['middleware'=>['web']], function(){
-
+Route::get('/', function () {
+	return view('blog.home');
 });
-
-
 
 Auth::routes();
 

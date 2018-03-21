@@ -162,6 +162,10 @@ return [
 
         Unisharp\Ckeditor\ServiceProvider::class,
 
+        // top menu blog service provider
+
+        App\Providers\BlogServiceProvider::class,
+
     ],
 
     /*

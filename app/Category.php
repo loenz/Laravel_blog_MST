@@ -22,4 +22,15 @@ class Category extends Model
     	return $this->hasMany(self::class, 'parent_id');
 
     }
+
+    public function articles() {
+
+    	return $this->morphedByMany('App\Article', 'categoryable');
+
+    }
+
+    public function scopeLastCategories () {
+    	return $query->orderBy('created_at', 'desc')->take($count)->get();
+    }
+
 }

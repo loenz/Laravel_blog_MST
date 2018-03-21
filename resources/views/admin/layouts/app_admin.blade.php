@@ -41,7 +41,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Блог</a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a class="dropdown-item" href="#">Категории</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.category.index') }}">Категории</a></li>
                                 <li><a class="dropdown-item" href="#">Материалы</a></li>
                             </ul>
                         </li>

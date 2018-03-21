@@ -33,7 +33,7 @@
 		<div class="row">
 			<div class="col-sm-6">
 
-				<a class="btn btn-block btn-default" href="#">
+				<a class="btn btn-block btn-default" href="{{route('admin.category.create')}}">
 					Создать категорию
 				</a>
 

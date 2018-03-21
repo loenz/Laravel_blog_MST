@@ -34,6 +34,6 @@ class Article extends Model
     //Polymorphic relation with categories
     public function categories() {
 
-    	return $this->morthToMany('App\Category', 'categoryable');
+    	return $this->morphToMany('App\Category', 'categoryable');
     }
 }

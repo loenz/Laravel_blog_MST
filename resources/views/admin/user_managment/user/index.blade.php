@@ -4,7 +4,7 @@
 
 <div class="container">
 	@component('admin.components.breadcrumb')
-		@slot('title') Список новостей @endslot
+		@slot('title') Список пользователей @endslot
 		@slot('parent') Главная @endslot
 		@slot('active') Пользователи @endslot
 	@endcomponent

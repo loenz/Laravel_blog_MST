@@ -1,42 +1,25 @@
-<label for="">Статус</label>
-<select class="form-control" name="published">
-	@if (isset($article->id))
-	<option value="0" @if ($article->published == 0) select @endif />Не опубликовано</option>
-	<option value="1" @if ($article->published == 1) select @endif />Опубликовано</option>
-	@else
-	<option value="0">Не опубликовано</option>
-	<option value="1">Опубликовано</option>
-	@endif
-</select>
+@if ( $errors->any() )
+	<div class="alert alert-danger">
+		<ul>
+			@foreach ($errors->all() as $error)
+				<li>{{$error}}</li>
+			@endforeach
+		</ul>		
+	</div>
+@endif 
 
-<label for="">Заголовок</label>
-<input type="text" class="form-control" name="title" placeholder="Заголовок новости" value="{{$article->title or ''}}" required>
+<label for="">Имя пользователя</label>
+<input type="text" class="form-control" name="name" placeholder="Имя" value="@if (old('name')){{old('name')}} @else {{$user->name or ""}} @endif" required>
 
-<label for="">Slug (Уникальное значение)</label>
-<input type="text" class="form-control" name="slug" placeholder="Автоматическая генерация" value="{{$article->slug or ''}}" readonly>
+<label for="">Электронная почта</label>
+<input type="text" class="form-control" name="email" placeholder="E-mail" value="@if (old('email')){{old('email')}} @else {{$user->email or ""}} @endif" required>
 
-<label for="">Категория новости</label>
-<select class="form-control" name="categories[]" multiple="">
-	<option value="0">--без родительской категории--</option>
-	@include('admin.articles.partials.categories', ['categories'=>$categories])
-</select>
+<label for="">Пароль</label>
+<input type="password" class="form-control" name="password">
 
-<label for="">Краткое описание</label>
-<textarea class="form-control" id="description_short" name="description_short">{{$article->description_short or ''}}</textarea>
+<label for="">Подтверждение</label>
+<input type="password" class="form-control" name="password_confirmation">
 
-<label for="">Полное описание</label>
-<textarea class="form-control" id="description" name="description">{{$article->description or ''}}</textarea>
-
-<hr />
-
-<label for="">Мета заголовок</label>
-<input type="text" class="form-control" name="meta_title" placeholder="Мета заголовок" value="{{$article->meta_title or ''}}">
-
-<label for="">Мета описание</label>
-<input type="text" class="form-control" name="meta_description" placeholder="Мета описание" value="{{$article->meta_description or ''}}">
-
-<label for="">Ключевые слова</label>
-<input type="text" class="form-control" name="meta_keyword" placeholder="Ключевые слова, через запятую" value="{{$article->meta_keyword or ''}}">
 
 <hr />
 

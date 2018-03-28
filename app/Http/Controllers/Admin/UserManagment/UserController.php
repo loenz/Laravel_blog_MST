@@ -16,7 +16,6 @@ class UserController extends Controller
     public function index()
     {
         //
-        print_r('qqq');
         return view('admin.user_managment.user.index', [
             'users' => User::paginate(5)
 
@@ -45,6 +44,19 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        User::create([
+            'name' => $request['name'], 
+            'email' => $request['email'],
+            'password' => bcrypt($request['password'])
+        ]);
+
+        return redirect()->route('admin.user_managment.user.index');
     }
 
     /**

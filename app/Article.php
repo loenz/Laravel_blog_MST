@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Str;
 
+
 class Article extends Model
 {
     //
     protected $fillable = [
-    	'title', 
+    	'title',
     	'slug', 
     	'description_short', 
     	'description', 
@@ -35,5 +36,10 @@ class Article extends Model
     public function categories() {
 
     	return $this->morphToMany('App\Category', 'categoryable');
+    }
+
+    public function comments() {
+
+        return $this->hasMany('App\Comment', 'article_slug', 'slug');
     }
 }

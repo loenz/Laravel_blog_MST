@@ -5,7 +5,7 @@
 <div class="container">
 	@component('admin.components.breadcrumb')
 
-		@slot('title') Редактирование ользователя @endslot
+		@slot('title') Редактирование пользователя @endslot
 		@slot('parent') Главная @endslot
 		@slot('active') Пользователи @endslot
 

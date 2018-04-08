@@ -108,6 +108,7 @@ class UserController extends Controller
         $user->name = $request['name'];
         $user->email = $request['email'];
         $request['password'] = null ?: $user->password = bcrypt($request['password']);
+        $user->role = $request['role'];
         $user->save();
 
         return redirect()->route('admin.user_managment.user.index');

@@ -20,6 +20,16 @@
 <label for="">Подтверждение</label>
 <input type="password" class="form-control" name="password_confirmation">
 
+<label for="">Права</label>
+<select class="form-control" name="role">
+	@if (isset($user->role))
+	<option value="admin" @if ($user->role == "admin") selected @endif />Admin</option>
+	<option value="user" @if ($user->role == "user") selected @endif />User</option>
+	<option value="moderator" @if ($user->role == "moderator") selected @endif />Moderator</option>
+	@else
+	<option value="0">Auth</option>
+	@endif
+</select>
 
 <hr />
 

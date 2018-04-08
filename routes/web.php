@@ -18,7 +18,7 @@ Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
 
 // Админка
 
-Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth']], function () {
+Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth','Admin']], function () {
 
 	Route::get('/', 'DashboardController@dashboard')->name('admin.index');
 
@@ -34,6 +34,12 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth']],
 
 Route::get('/', function () {
 	return view('blog.home');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+
+	Route::post('/comments/create', 'CommentsController@create')->name('comments.create');
+
 });
 
 Auth::routes();

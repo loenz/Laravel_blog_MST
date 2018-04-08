@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Article;
 use Illuminate\Http\Request;
+use App\Comment;
 
 class BlogController extends Controller
 {
@@ -19,8 +20,12 @@ class BlogController extends Controller
     }
 
     public function article($slug) {
+
+        $comments = Comment::where('article_slug', $slug)->get();
+
     	return view('blog.article', [
-    		'article' => Article::where('slug', $slug)->first()
+    		'article' => Article::where('slug', $slug)->first(),
+            'comments' => $comments
     	]);
     }
 }
